@@ -1,0 +1,44 @@
+.select-role-nav {
+  margin-top: 3%;
+  height: 10%;
+  margin-left: 4%;
+  aspect-ratio: 10/1;
+}
+.select-role-nav img {
+  width: 15vw;
+  margin-left: 2%;
+}
+.select-role-main {
+  width: 1034px;
+}
+.select-role-header {
+  margin-top: 5%;
+  text-align: center;
+}
+.select-role-header h3 {
+  color: #25292a;
+  font-weight: 600;
+  font-size: 30px;
+}
+.select-role-header p {
+  color: #8d9a9b;
+}
+.select-role-options {
+  display: flex;
+  margin-top: 5%;
+  margin-left: 28%;
+  gap: 10%;
+  width: 100%;
+}
+.select-role-options img {
+  width: 150px;
+}
+.select-role-options div {
+  border: 0.2px solid #18a0fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;  
+}
