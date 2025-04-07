@@ -5,6 +5,8 @@ import paydoctor from "./paydoctor.png"
 import whitelogo from "./whitelogo.png"
 import showpassword from "./showpassword.svg"
 import hidepassword from "./hidepassword.svg";
+import availability from "./availability.png"
+import appointment from "./appointment.png"
 export const assets = {
     logo,
     doctor,
@@ -12,5 +14,7 @@ export const assets = {
     paydoctor,
     whitelogo,
     showpassword,
-    hidepassword
+    hidepassword,
+    availability,
+    appointment
 }

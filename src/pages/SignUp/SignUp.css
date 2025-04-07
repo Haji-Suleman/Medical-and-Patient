@@ -83,6 +83,24 @@
   border: 1px solid #f0f0f1;
   outline-color: #60bfff;
   outline-width: 0.2px;
+  font-size: 1.4rem;
+  color: rgb(16, 15, 15);
+  border-radius: 12px;
+}
+.patient-login .right-sign-up form select {
+  color: rgb(96, 110, 123);
+}
+.patient-login .right-sign-up form select option {
+  width: 100%;
+  color: rgba(33, 32, 32, 0.678);
+  border-bottom: 1px solid #f0f0f1;
+}
+.patient-login .right-sign-up label::after {
+  content: " *";
+  color: red;
+}
+.patient-login .right-sign-up label {
+  font-size: 1.3rem;
 }
 .patient-login .right-sign-up form div div.password img {
   height: 6.3vh;
@@ -105,4 +123,16 @@
   height: 7.5vh;
   border-radius: 12px;
   font-size: 20px;
+}
+
+.patient-login .right-sign-up p {
+  color: #898993;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 80%;
+}
+.patient-login .right-sign-up p span {
+  color: #18a0fb;
+  font-weight: bold;
+  cursor: pointer;
 }

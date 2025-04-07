@@ -1,0 +1,33 @@
+.sidebar {
+  background-color: #18a0fb;
+  width: 23vw;
+  height: 100vh;
+}
+.sidebar div.side-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 23%;
+}
+.sidebar div.side-logo .logo {
+  width: 11vw;
+}
+.sidebar .links {
+  font-size: 1.5vw;
+  color: white;
+  margin-left: 2vw;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+.sidebar .links .active {
+  background-color: white;
+  color: #18a0fb;
+  width: 65%;
+}
+.sidebar .links div {
+  padding: 0.5vw;
+  border-radius: 5px;
+}
