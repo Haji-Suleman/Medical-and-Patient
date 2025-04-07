@@ -1,44 +1,68 @@
 .select-role-nav {
-  margin-top: 3%;
+  margin-top: 2%;
   height: 10%;
-  margin-left: 4%;
+  margin-left: 6%;
   aspect-ratio: 10/1;
+  margin-bottom: 1%;
 }
 .select-role-nav img {
-  width: 15vw;
-  margin-left: 2%;
-}
-.select-role-main {
-  width: 1034px;
+  width: 16vw;
 }
 .select-role-header {
-  margin-top: 5%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-.select-role-header h3 {
-  color: #25292a;
-  font-weight: 600;
-  font-size: 30px;
+.select-role-header h1 {
+  color: #383e3f;
+  font-weight: 450;
+  font-size: 45px;
 }
 .select-role-header p {
   color: #8d9a9b;
+  font-size: 26px;
 }
 .select-role-options {
   display: flex;
-  margin-top: 5%;
-  margin-left: 28%;
-  gap: 10%;
+  justify-content: center;
+  gap: 5%;
+  margin-top: 2%;
   width: 100%;
 }
 .select-role-options img {
-  width: 150px;
+  width: 360px;
+}
+.select-role-options p {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 2px;
 }
 .select-role-options div {
-  border: 0.2px solid #18a0fb;
+  border: 2px solid #b0c1c2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 450px;
+  height: 400px;
+  border-radius: 12px;
+}
+.select-role-options div.active {
+  border: 0.2px solid #18a0fb;
+}
+.select-role-continue {
+  display: flex;
+  margin-top: 5%;
+  justify-content: end;
+  margin-right: 10%;
+}
+.select-role-continue button {
   width: 200px;
-  height: 200px;
-  border-radius: 12px;  
+  height: 50px;
+  background-color: #18a0fb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  margin-bottom: 100px;
 }

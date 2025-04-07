@@ -1,0 +1,108 @@
+.patient-login {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.patient-login .left-sign-up {
+  background-color: #18a0fb;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 2%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.patient-login .left-sign-up img.logo {
+  width: 25%;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.patient-login .left-sign-up .ellipse {
+  width: 40vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position: absolute;
+  top: -34%;
+  left: 60%;
+  z-index: -1;
+  background-color: #60bfff;
+  border: 2vw solid #49b6ff;
+  outline: 3vw solid #32aafb;
+}
+
+.patient-login .left-sign-up .ellipse:nth-child(2) {
+  top: 60%;
+  left: -19%;
+}
+
+.patient-login .left-sign-up img.paydoctor {
+  width: 60%;
+  margin-left: 33%;
+  margin-top: 32%;
+  margin-bottom: -5%;
+  position: relative;
+}
+
+.patient-login .right-sign-up {
+  width: 45%;
+  background-color: white;
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+.patient-login .right-sign-up h1 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 4%;
+  width: 80%;
+}
+.patient-login .right-sign-up form {
+  display: flex;
+  gap: 2vw;
+  flex-direction: column;
+}
+.patient-login .right-sign-up form div {
+  display: flex;
+  flex-direction: column;
+}
+.patient-login .right-sign-up form input,
+.patient-login .right-sign-up form select {
+  width: 80%;
+  height: 6.3vh;
+  margin-top: 2%;
+  border: 1px solid #f0f0f1;
+  outline-color: #60bfff;
+  outline-width: 0.2px;
+}
+.patient-login .right-sign-up form div div.password img {
+  height: 6.3vh;
+  margin-top: 3%;
+  margin-left: -6%;
+}
+.patient-login .right-sign-up form div div.password {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.patient-login .right-sign-up form button {
+  color: white;
+  background-color: #18a0fb;
+  width: 80%;
+  border: none;
+  height: 7.5vh;
+  border-radius: 12px;
+  font-size: 20px;
+}
