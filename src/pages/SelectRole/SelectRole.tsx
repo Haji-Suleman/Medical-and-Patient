@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import "./SelectRole.css"
 import { assets } from '../../assets/assets'
+import { useNavigate } from 'react-router-dom';
 const SelectRole = () => {
     const [active, setActive] = useState("");
+    const navigate = useNavigate();
     return (
         <div className='select-role'>
             <div className="select-role-nav">
@@ -19,7 +21,7 @@ const SelectRole = () => {
                 <div className={active !== 'doctor' ? "active" : ""} onClick={() => setActive("patient")}><img src={assets.patient} alt="" /><p>patient</p></div>
             </div >
             <div className="select-role-continue">
-                <button>Continue</button>
+                <button onClick={() => navigate("/signup")}>Continue</button>
             </div>
         </div >
     )
