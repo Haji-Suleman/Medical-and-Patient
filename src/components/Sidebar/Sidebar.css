@@ -2,6 +2,7 @@
   background-color: #18a0fb;
   width: 23vw;
   height: 100vh;
+  position: fixed;
 }
 .sidebar div.side-logo {
   display: flex;

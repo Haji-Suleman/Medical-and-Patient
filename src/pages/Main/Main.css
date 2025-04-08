@@ -1,4 +1,6 @@
 .main {
   display: flex;
-  overflow: hidden;
+}
+.nav-app-avail {
+  margin-left: 23vw;
 }

@@ -1,5 +1,5 @@
 import SelectRole from './pages/SelectRole/SelectRole'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import SignUp from './pages/SignUp/SignUp'
 import Main from './pages/Main/Main'
 const App = () => {

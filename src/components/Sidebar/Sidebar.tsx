@@ -2,7 +2,12 @@ import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import "./Sidebar.css"
 import { useEffect } from 'react'
-const Sidebar = (props) => {
+type PropsTypes = {
+    appointment: boolean;
+    setAppointment: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Sidebar = (props: PropsTypes) => {
     useEffect(() => {
         if ("appointment" === window.location.href.split("#")[1]) {
             props.setAppointment(true);

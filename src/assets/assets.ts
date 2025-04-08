@@ -7,6 +7,8 @@ import showpassword from "./showpassword.svg"
 import hidepassword from "./hidepassword.svg";
 import availability from "./availability.png"
 import appointment from "./appointment.png"
+import bell from "./bell.png"
+import userimg from "./userimg.png"
 export const assets = {
     logo,
     doctor,
@@ -16,5 +18,7 @@ export const assets = {
     showpassword,
     hidepassword,
     availability,
-    appointment
+    appointment,
+    bell,
+    userimg
 }
