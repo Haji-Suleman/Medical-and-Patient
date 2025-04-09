@@ -35,8 +35,8 @@ const Availability = () => {
                                     <span>Unavailable</span>
                                 ) : (
                                     <>
-                                        To<input type="time" />
-                                        From<input type="time" />
+                                        To <input type="time" />
+                                        From <input type="time" />
 
                                     </>
                                 )}
