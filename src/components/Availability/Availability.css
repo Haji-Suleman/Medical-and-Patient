@@ -1,5 +1,104 @@
+.availability {
+  margin-left: 2vw;
+  margin-top: 3vw;
+}
+
 h1.availability-heading {
-  margin: 3vh 2vw;
   font-weight: unset;
   font-size: 1.5rem;
+}
+
+.availability-options {
+  margin-top: 2vw;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  gap: 130px;
+  max-width: 500px;
+  margin-bottom: 1vw;
+}
+
+.timings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+}
+
+.day label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 160px; /* Fixed width for perfect alignment */
+}
+
+.day label div {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.day input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.day > div:last-child {
+  display: flex;
+  gap: 10px;
+}
+
+.day input[type="time"] {
+  width: 200px;
+  height: 35px;
+  opacity: 0.5;
+  border: 1px solid #9ea9aa;
+  outline-color: #18a0fb;
+  border-radius: 4px;
+}
+.day input[type="time"]:focus {
+  opacity: 1;
+}
+.time-input-container {
+  justify-content: start;
+  width: 100%;
+  padding-left: 64px;
+  color: #9ea9aa;
+  align-items: center;
+}
+.addremoveinput {
+  margin-top: -35px;
+  position: relative;
+}
+.addremoveinput img {
+  width: 40px;
+  right: 0;
+  position: absolute;
+}
+
+.avail-footer {
+  margin-top: 38px;
+  margin-right: 50px;
+  text-align: right;
+}
+.avail-footer button {
+  padding: 1em 5em;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  margin-bottom: 10px;
+  background-color: #18a0fb;
 }

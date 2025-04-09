@@ -9,6 +9,8 @@ import availability from "./availability.png"
 import appointment from "./appointment.png"
 import bell from "./bell.png"
 import userimg from "./userimg.png"
+import addicon from "./addicon.png";
+import removeicon from "./removeicon.png";
 export const assets = {
     logo,
     doctor,
@@ -20,5 +22,7 @@ export const assets = {
     availability,
     appointment,
     bell,
-    userimg
+    userimg,
+    addicon,
+    removeicon
 }
