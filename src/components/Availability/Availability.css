@@ -68,6 +68,7 @@ h1.availability-heading {
   border: 1px solid #9ea9aa;
   outline-color: #18a0fb;
   border-radius: 4px;
+  color: #8d9394;
 }
 .day input[type="time"]:focus {
   opacity: 1;
@@ -78,6 +79,11 @@ h1.availability-heading {
   padding-left: 64px;
   color: #9ea9aa;
   align-items: center;
+}
+.time-input-container div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .addremoveinput {
   margin-top: -35px;

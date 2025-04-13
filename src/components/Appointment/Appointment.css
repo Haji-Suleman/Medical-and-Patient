@@ -1,0 +1,49 @@
+.appointment {
+  color: #18a0fb;
+  margin-left: 16px;
+}
+.second-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+.second-nav h1 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: black;
+}
+.second-nav select {
+  width: 6em;
+  font-size: 0.9rem;
+  height: 1.9em;
+  border-radius: 8px;
+  margin-right: 20px;
+  border: 1px solid #9ea9aa;
+  color: #9ea9aa;
+}
+.appoint-day {
+  display: flex;
+  justify-content: space-evenly;
+}
+.appoint-day div {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 18px;
+  color: black;
+}
+.date div {
+  border-radius: 8px;
+  width: 100px;
+  height: 37px;
+  background-color: #f2f5f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
