@@ -11,6 +11,10 @@ import bell from "./bell.png"
 import userimg from "./userimg.png"
 import addicon from "./addicon.png";
 import removeicon from "./removeicon.png";
+import emily from "./emily.png"
+import calender from "./calender.png"
+import time from "./time.png"
+import call from "./call.png"
 export const assets = {
     logo,
     doctor,
@@ -24,5 +28,9 @@ export const assets = {
     bell,
     userimg,
     addicon,
-    removeicon
+    removeicon,
+    emily,
+    call,
+    calender,
+    time
 }

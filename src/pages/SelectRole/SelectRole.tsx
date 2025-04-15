@@ -21,7 +21,7 @@ const SelectRole = () => {
                 <div className={active !== 'doctor' ? "active" : ""} onClick={() => setActive("patient")}><img src={assets.patient} alt="" /><p>patient</p></div>
             </div >
             <div className="select-role-continue">
-                <button onClick={() => navigate("/signup")}>Continue</button>
+                <button onClick={() => navigate("/doctor/signup")}>Continue</button>
             </div>
         </div >
     )

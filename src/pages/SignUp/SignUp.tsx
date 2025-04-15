@@ -58,7 +58,7 @@ const SignUp = () => {
                             <img onClick={() => showPassword ? setShowPassword(false) : setShowPassword(true)} src={showPassword ? assets.showpassword : assets.hidepassword} />
                         </div>
                     </div>
-                    <button onClick={() => navigate("/home")}>Continue</button>
+                    <button onClick={() => navigate("/doctor/home")}>Continue</button>
                     {showLogin ?
                         <p>Already have an account? <span onClick={() => setShowLogin(false)}>Login</span></p> :
                         <p>Don't have account  <span onClick={() => setShowLogin(true)}>Sign Up</span></p>

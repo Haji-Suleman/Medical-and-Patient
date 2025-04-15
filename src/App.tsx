@@ -7,8 +7,8 @@ const App = () => {
     <>
       <Routes>
         <Route path='/' element=<SelectRole /> />
-        <Route path='/signup' element=<SignUp /> />
-        <Route path='/home' element=<Main /> />
+        <Route path='/doctor/signup' element=<SignUp /> />
+        <Route path='/doctor/home' element=<Main /> />
       </Routes>
     </>
   )

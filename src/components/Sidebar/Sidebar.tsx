@@ -20,8 +20,8 @@ const Sidebar = (props: PropsTypes) => {
                 <img src={assets.whitelogo} alt="" className='logo' />
             </div>
             <div className="links">
-                <div className={props.appointment ? "" : "active"}><Link to="/home/#availability" onClick={() => props.setAppointment(false)}>img Set Availability</Link></div>
-                <div className={props.appointment ? "active" : ""}><Link to="/home/#appointment" onClick={() => props.setAppointment(true)}>img appointment</Link></div>
+                <div className={props.appointment ? "" : "active"}><Link to="/doctor/home/#availability" onClick={() => props.setAppointment(false)}>img Set Availability</Link></div>
+                <div className={props.appointment ? "active" : ""}><Link to="/doctor/home/#appointment" onClick={() => props.setAppointment(true)}>img appointment</Link></div>
             </div>
         </div>
     )
