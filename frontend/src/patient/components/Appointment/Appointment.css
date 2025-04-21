@@ -1,0 +1,38 @@
+.name-photo-status-patient {
+  display: flex;
+  justify-content: space-between;
+}
+.name-photo-status-patient > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.name-photo-status-patient > div:first-child img {
+  width: 36px;
+  aspect-ratio: 1/1;
+}
+.name-photo-status-patient > div:first-child p:last-child {
+  font-weight: 500;
+  font-size: 13px;
+  color: #18a0fb;
+}
+.name-photo-status-patient > div:last-child button {
+  width: 109px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #626d6f;
+  background-color: #e9edee;
+  border: none;
+  border-radius: 8px;
+}
+.appointment .appoint-patient-footer > div {
+  border: 1px solid #eaeaea;
+  padding: 15px;
+  border-radius: 10px;
+  width: 353px;
+  height: 161px;
+}
+.appointment .appoint-patient-footer > div {
+  border-top: 2px solid #18a0fb;
+}

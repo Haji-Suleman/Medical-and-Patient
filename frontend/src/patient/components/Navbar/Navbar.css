@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #f2f5f6;
+  width: 78vw;
+  height: min(70px, 18vh);
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 5vw;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-left .bell {
+  width: 2.2rem;
+  margin-right: 2vw;
+}
+.user-data {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 4vw;
+}
+.user-img {
+  height: 3rem;
+}

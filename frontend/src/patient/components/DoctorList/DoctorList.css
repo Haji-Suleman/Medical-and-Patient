@@ -1,0 +1,101 @@
+.doctor-list {
+  width: 100%;
+  margin: 30px 20px 16px;
+  padding-right: 65px;
+}
+.doctor-list .heading h1 {
+  font-weight: 400;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+.doctor-list .second-heading {
+  display: flex;
+  gap: 100px;
+  position: relative;
+  width: 100%;
+}
+.doctor-list .second-heading > div:first-child {
+  width: 100%;
+  position: relative;
+}
+.doctor-list .second-heading input {
+  border: 1.5px solid #f0f0f1;
+  padding: 10px;
+  outline-color: #18a0fb;
+  border-radius: 10px;
+  padding-right: 6%;
+  font-size: 18px;
+  width: 100%;
+  color: #adadad;
+}
+.doctor-list .second-heading input::placeholder {
+  color: #adadad;
+}
+.doctor-list .second-heading img {
+  position: absolute;
+  left: 95%;
+  margin-top: 10px;
+  height: 24px;
+  aspect-ratio: 1/1;
+}
+.doctor-list .second-heading select {
+  width: 25%;
+  font-size: 16px;
+  color: #adadad;
+  border-radius: 10px;
+  border: 1.5px solid #f0f0f1;
+}
+.doctor-list .main {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.doctor-list .main > div {
+  border: 1px solid #d8dfe0;
+  padding: 10px;
+  width: 356px;
+  border-radius: 12px;
+  height: 138px;
+}
+.doctor-list .main .main-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.doctor-list .main .main-heading img {
+  width: 36px;
+  aspect-ratio: 1/1;
+}
+.doctor-list .main .main-heading div p {
+  font-size: 16px;
+}
+.doctor-list .main .main-heading div p:last-child {
+  color: #18a0fb;
+  font-size: 14px;
+}
+.doctor-list .main .main-main > div {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.doctor-list .main .main-main div img {
+  width: 14px;
+  aspect-ratio: 1/1;
+}
+.doctor-list .main .main-main div {
+  color: #51595a;
+  font-size: 12px;
+}
+.main-and-doctor-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.doctor-details {
+  width: 30px;
+  aspect-ratio: 1/1;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
