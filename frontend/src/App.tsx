@@ -7,26 +7,28 @@ import MainPatient from './patient/pages/Main/Main'
 import { ToastContainer } from 'react-toastify'
 import { useContext, } from 'react'
 import { StoreContext } from './Context/StoreContext'
+import Error from './patient/pages/Error/Error'
 const App = () => {
   const context = useContext(StoreContext);
   if (!context) return null;
-  const {token} = context;
-  
+  const { token } = context;
+
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <Routes>
-        {token?
-        <>
-        </>:
-        <>
-        <Route path='/' element={<SelectRole />} />
-        <Route path='/doctor/signup' element={<SignUpDoctor />} />
-        <Route path='/patient/signup' element={<SignUpPatient />} />
-        </>
+        {token ?
+          <>
+          </> :
+          <>
+            <Route path='/' element={<SelectRole />} />
+            <Route path='/doctor/signup' element={<SignUpDoctor />} />
+            <Route path='/patient/signup' element={<SignUpPatient />} />
+          </>
         }
         <Route path='/doctor/home' element={<MainDoctor />} />
         <Route path='/patient/home' element={<MainPatient />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </>
   )

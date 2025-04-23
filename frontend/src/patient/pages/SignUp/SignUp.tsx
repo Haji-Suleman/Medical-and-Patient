@@ -6,14 +6,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { StoreContext } from "../../../Context/StoreContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<inputs>();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [showLogin, setShowLogin] = useState<boolean>(false);
     const context = useContext(StoreContext);
+    const navigate = useNavigate();
     if (!context) return null;
     const { url,setToken} = context;
-
     const onSubmit: SubmitHandler<inputs> = async (data) => {
         let newUrl:string = url;
         if(showLogin===true){
@@ -25,6 +26,7 @@ const SignUp = () => {
         const response = await axios.post(newUrl, data);
         if (response.data.success) {
             setToken(response.data.token)
+            navigate("/patient/home")
         }
         else{
             toast.error(response.data.message);

@@ -21,3 +21,11 @@ export const addDoctorUser = async (req, res) => {
     });
   }
 };
+export const DoctorList = async (req, res) => {
+  try {
+    const data = await DoctorRegisterModel.find();
+    return res.send({ success: true, data });
+  } catch (error) {
+    console.log(error);
+  }
+};

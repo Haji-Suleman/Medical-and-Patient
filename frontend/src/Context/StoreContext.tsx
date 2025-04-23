@@ -1,54 +1,61 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
-import { Doctor, StoreContextType } from '../types/types'; // adjust path
+import { Doctor, StoreContextType, UserData, elementType } from '../types/types';
+import axios from 'axios';
 
 export const StoreContext = createContext<StoreContextType | null>(null);
 
 type Props = {
     children: ReactNode;
 };
-const doctors: Doctor[] = [
-    {
-        name: 'emily',
-        availability: ['Mon', 'Wed'],
-        experience: 5,
-        rating: 4.5,
-        speciality: 'Dermatology',
-        comment: "Dr. Patel has dedicated over 8 years to orthopedic care, focusing on treating musculoskeletal injuries, joint disorders, and sports injuries. Known for his patient-centered approach, he tailors treatment plans to fit individual needs, from preventative care to surgical solutions."
-    },
 
-    // Add more dummy doctors
-];
+const url: string = "http://localhost:4000";
 
-const url: string = "http://localhost:4000"
 const StoreContextProvider = ({ children }: Props) => {
     const [active, setActive] = useState<string>('doctor');
-    const [data] = useState<Doctor[]>(doctors);
+    const [data, setData] = useState<Doctor[]>([]);
     const [token, setToken] = useState<string>("");
+    const [userData, setUserData] = useState<UserData>({ name: "", email: "", date: "", _id: "" });
+
     useEffect(() => {
         async function loadData() {
-            if (localStorage.getItem("token")) {
-                const token1 = localStorage.getItem("token");
-                if (typeof token1 === "string") {
-                    setToken(token1);
+            try {
+                const localToken = localStorage.getItem("token");
+                if (localToken) {
+                    setToken(localToken);
+                    const response = await axios.post(`${url}/api/patient/data`, { token: localToken });
+                    const { name, email, date, _id } = response.data.data;
+                    setUserData({ name, email, date, _id });
                 }
 
+                const DoctorList = await axios.post(`${url}/api/doctor/list`);
+                const DoctorData: elementType[] = DoctorList.data.data;
 
+                const formattedDoctors: Doctor[] = DoctorData.map(doctor => ({
+                    name: doctor.name,
+                    availability: ["Mon", "Wed"],
+                    experience: 5,
+                    rating: 4.5,
+                    comment: "NOtAdded",
+                    speciality: doctor.speciality
+                }));
+
+                setData(formattedDoctors);
+            } catch (error) {
+                console.error("Error loading data:", error);
             }
-
         }
-        loadData();
 
-    }, [])
+        loadData();
+    }, []);
+
     useEffect(() => {
         if (token) {
-
-            setToken(token)
             localStorage.setItem("token", token);
-            console.log(localStorage.getItem("token"))
         }
-    }, [token])
+    }, [token]);
+
     return (
-        <StoreContext.Provider value={{ active, setActive, data, url, token, setToken }}>
+        <StoreContext.Provider value={{ active, setActive, data, url, token, setToken, userData }}>
             {children}
         </StoreContext.Provider>
     );
