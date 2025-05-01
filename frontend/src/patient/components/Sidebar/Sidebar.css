@@ -8,7 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 23%;
+  height:126px
+  ;
 }
 .sidebar div.side-logo .logo {
   width: 11vw;
@@ -21,7 +22,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1vw;
+  gap: 10px;
 }
 .sidebar .links .active {
   background-color: white;

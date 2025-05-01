@@ -1,51 +1,61 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./Appointment.css"
 import { assets } from "../../../assets/assets"
+import axios from "axios";
 const Appointment = () => {
     const [keyState, setKeyState] = useState<number>(0);
-    const [activePatient, setActivePatient] = useState<number>(-1)
+    const [activePatient, setActivePatient] = useState<number>(-1);
+    const [status,changeStatus] = useState<string>("pending");
+    const url = "http://localhost:4000";
+    type Appointment = {
+        name: string;
+        date: string;
+        time: string;
+        number: string;
+        comment: string;
+        imageLink: string;
+        status?: string;
+    };
+
+    const [data, setData] = useState<Appointment[]>();
+
+    useEffect(() => {
+        const LoadData = async () => {
+
+            const showRequests = await axios.post(`${url}/api/doctor/showrequest`, { token: localStorage.getItem('token') });
+            console.log(showRequests)
+            const realData: {
+                name: string;
+                date: string;
+                time: string;
+                number: string;
+                comment: string;
+                imageLink: string;
+                doctorId?: string
+                status: string;
+                userId?: string;
+            }[] = showRequests.data.data
+            setData(realData)
+        }
+        LoadData()
+    }, [])
+    useEffect(()=>{
+        console.log("The status is ",status)
+    },[status])
+    if (!data) return null;
     const onclickHandler = (key: number): number => {
         setKeyState(key);
         return 0;
     }
-    type Appointment = {
-        name: string;
-        date: {
-            day: number;
-            month: string;
-            year: number;
-        };
-        time: {
-            first_time: string;
-            second_time: string;
-        };
-        phone: string;
-        comment: string;
-    };
-
-    const data: Appointment[] = [
-        {
-            name: "Emily Jones",
-            date: { day: 9, month: "November", year: 2024 },
-            time: { first_time: "11:00am", second_time: "11:30pm" },
-            phone: "+923079852568",
-            comment: "I would like to discuss recent test results"
-        },
-        {
-            name: "Emily Jones",
-            date: { day: 9, month: "November", year: 2024 },
-            time: { first_time: "11:00am", second_time: "11:30pm" },
-            phone: "+923079852568",
-            comment: "I would like to discuss recent test results"
-        },
-        {
-            name: "Emily Jones",
-            date: { day: 9, month: "November", year: 2024 },
-            time: { first_time: "11:00am", second_time: "11:30pm" },
-            phone: "+923079852568",
-            comment: "I would like to discuss recent test results"
+    const today = new Date().getDate();
+    const day = new Date().toLocaleDateString('en-US', {weekday:"short"}).toUpperCase();
+    let count = 0;
+    const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+    for (let i = 0; i < 7; i++) {
+        if(days[i]===day){
+            count = i
         }
-    ];
+    }
     return (
         <div className="appointment">
             <div className="second-nav">
@@ -60,18 +70,17 @@ const Appointment = () => {
             </div>
             <div className="mid-appointment">
                 <div className="appoint-day">
-                    {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map((_, key) => {
+                    {days.map((_, key,daysEf) => {
                         return (
                             <div className="day-name" key={key}>
-                                {_}
+                                {daysEf[count++%7]}
                             </div>
-
                         )
                     })
                     }
                 </div>
                 <div className="date">
-                    {[5, 6, 7, 8, 9, 10, 11].map((_, key) => (
+                    {[today, today + 1, today + 2, today + 3, today + 4, today + 5, today + 6].map((_, key) => (
                         <div key={key} className={keyState === key ? "active" : ""} onClick={() => onclickHandler(key)}>
                             {_}
                         </div>
@@ -80,7 +89,29 @@ const Appointment = () => {
             </div>
             <div className="appoint-footer">
                 {
-                    data.map(({ date, time, phone, comment, name }, key) => {
+                    data.map(({ date, time, number, comment, name }, key) => {
+                        const newDate = new Date(date);
+                        const day = newDate.getDate();
+                        const month = newDate.toLocaleString('default', { month: 'short' });
+                        const year = newDate.getFullYear();
+                        const [first_time, second_time] = [parseInt(time.split(":")[0]), parseInt(time.split(":")[1])];
+                        let second_first_time = first_time;
+                        let second_second_time = second_time + 30;
+                        if (second_second_time >= 60) {
+                            second_second_time -= 60;
+                            second_first_time += 1;
+                        }
+
+                        function formatTime(hour: number, minute: number): string {
+                            const ampm = hour >= 12 ? "pm" : "am";
+                            hour = hour % 12;
+                            if (hour === 0) hour = 12;
+                            const minuteStr = minute < 10 ? `0${minute}` : `${minute}`;
+                            return `${hour}:${minuteStr}${ampm}`;
+                        }
+
+                        const firstTimeString = formatTime(first_time, second_time);
+                        const secondTimeString = formatTime(second_first_time, second_second_time);
                         return (
                             <div key={key} onClick={() => setActivePatient(key)} className={activePatient === key ? "active-patient" : ""}>
                                 <div className="name-photo-patient">
@@ -90,23 +121,23 @@ const Appointment = () => {
                                 <div className="date-time">
                                     <div className="date-time-date">
                                         <img src={assets.calender} alt="" className="call-calender-time-icons" />
-                                        <p>{date.day} {date.month}, {date.year}</p>
+                                        <p> {day} {month}, {year} </p>
                                     </div>
                                     <div className="date-time-time">
                                         <img src={assets.time} alt="" className="call-calender-time-icons" />
-                                        <p>{time.first_time} - {time.second_time}</p>
+                                        <p>{firstTimeString} - {secondTimeString}</p>
                                     </div>
                                 </div>
                                 <div className="patient-phone">
                                     <img src={assets.call} alt="" className="call-calender-time-icons" />
-                                    <p> {phone}</p>
+                                    <p> {number}</p>
                                 </div>
                                 <div className="patient-comment">
                                     {comment}
                                 </div>
                                 <div className="confirm-decline">
-                                    <button className="decline">decline</button>
-                                    <button className="confirm">confirm</button>
+                                    <button className="decline" onClick={()=>changeStatus("declined")}>decline</button>
+                                    <button className="confirm" onClick={()=>changeStatus("accepted")}>confirm</button>
                                 </div>
                             </div>
                         )

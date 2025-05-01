@@ -1,6 +1,11 @@
+import { useContext } from "react"
 import { assets } from "../../../assets/assets"
 import "./Navbar.css"
+import { StoreContext } from "../../../Context/StoreContext"
 const Navbar = () => {
+    const context = useContext(StoreContext);
+    if (!context) return null;
+    const { userData } = context;
     return (
         <div className='navbar'>
             <div className="nav-left">
@@ -11,7 +16,7 @@ const Navbar = () => {
                     </div>
                     <div className="data">
                         <p>Welcome</p>
-                        <p><b>Dr.James Shawn</b></p>
+                        <p><b>{userData.name}</b></p>
                     </div>
                 </div>
             </div>

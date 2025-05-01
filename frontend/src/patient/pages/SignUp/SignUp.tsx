@@ -17,6 +17,8 @@ const SignUp = () => {
     const { url,setToken} = context;
     const onSubmit: SubmitHandler<inputs> = async (data) => {
         let newUrl:string = url;
+        data.role = "patient";
+        console.log(data)
         if(showLogin===true){
             newUrl+="/api/patient/login";
         }

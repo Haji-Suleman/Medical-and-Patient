@@ -1,11 +1,12 @@
-import PatientRegisterModel from "../models/patientModel.js";
+import user from "../models/user.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 export const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password ,role} = req.body;
+  
   try {
-    const patient = await PatientRegisterModel.findOne({ email });
+    const patient = await user.findOne({ email });
     if (!patient) {
       return res.json({ success: false, message: "User Does not exists" });
     }
@@ -28,9 +29,9 @@ const createToken = (id) => {
 };
 
 export const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   // if user is already exists
-  const exists = await PatientRegisterModel.findOne({ email });
+  const exists = await user.findOne({ email });
   if (exists) {
     return res.json({ success: false, message: "User already exists" });
   }
@@ -51,10 +52,12 @@ export const registerUser = async (req, res) => {
   // hashing the password
   const hashedpassword = await bcrypt.hash(password, salt);
 
-  const PatientUser = new PatientRegisterModel({
+  const PatientUser = new user({
     name,
     password: hashedpassword,
     email,
+    role,
+    doctorAvailability: {}
   });
 
   try {
@@ -73,8 +76,8 @@ export const registerUser = async (req, res) => {
 export const userData = async (req, res) => {
   const { token } = req.body;
   const id = jwt.verify(token, process.env.JWT_SECRET);
-  console.log("The data is the",id);
-  const data = await PatientRegisterModel.findById(id.id);
+  console.log("The data is the", id);
+  const data = await user.findById(id.id);
   if (!data) {
     return res.json({ success: false, message: "Error" });
   }

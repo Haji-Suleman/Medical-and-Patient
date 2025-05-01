@@ -5,6 +5,7 @@ export type Doctor = {
     rating: number;
     speciality: string;
     comment: string;
+    _id: string;
 };
 export interface UserData {
     name: string;
@@ -20,13 +21,22 @@ export type StoreContextType = {
     url: string;
     setToken: React.Dispatch<React.SetStateAction<string>>
     token: string;
-    userData: UserData
+    userData: UserData;
+    page: boolean;
+    setPage: React.Dispatch<React.SetStateAction<boolean>>
 };
 export type inputs = {
     name: string;
     email: string
     password: string;
+    role: "patient"
 
+}
+export interface doctorInputs {
+    name?: string;
+    email: string;
+    password: string;
+    specialization?: string;
 }
 export interface elementType {
     name: string;
@@ -35,4 +45,10 @@ export interface elementType {
     _id: string;
     speciality: string;
 
+}
+export interface inputTime {
+    [key: string]: {
+        timeFrom: string;
+        timeTo: string;
+    };
 }

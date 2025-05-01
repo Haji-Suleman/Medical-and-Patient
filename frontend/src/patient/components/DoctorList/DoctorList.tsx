@@ -2,11 +2,17 @@ import "./DoctorList.css"
 import { assets } from '../../../assets/assets'
 import { useContext } from "react";
 import { StoreContext } from "../../../Context/StoreContext";
-
+import { useNavigate } from "react-router-dom";
 const DoctorList = () => {
+  const navigate = useNavigate()
   const context = useContext(StoreContext)
   if (!context) return null
-  const { data } = context
+  const { data, setPage } = context
+  const DoctorDetails = (id: string) => {
+    console.log(id)
+    setPage(true);
+    navigate(`?id=${id}`)
+  }
   return (
     <div className='doctor-list'>
       <div className='heading'>
@@ -30,14 +36,14 @@ const DoctorList = () => {
         </select>
       </div>
       <div className="main">
-        {data.map(({ name, availability, experience, speciality, rating }, key) => {
+        {data.map(({ name, availability, experience, speciality, rating, _id }, key) => {
           return (
             <div key={key}>
               <div className="main-heading">
                 <img src={assets.emily} alt="" />
                 <div>
                   <p>Dr. {name.charAt(0).toUpperCase() + name.slice(1)}</p>
-                  <p>{speciality}</p> 
+                  <p>{speciality}</p>
                 </div>
               </div>
               <div className="main-and-doctor-details">
@@ -62,12 +68,12 @@ const DoctorList = () => {
                     <div>{experience} Years of experience </div>
                   </div>
                   <div className="rating">
-                    <div><img src={assets.rating} alt="" /></div>
+                    <div><img src={assets.rating} /></div>
                     <div>{rating} start rating</div>
                   </div>
                 </div>
                 <div className="doctor-details" >
-                  <img src={assets.doctordetails} alt="" className='doctor-details' />
+                  <img src={assets.doctordetails} onClick={() => DoctorDetails(_id)} className='doctor-details' />
                 </div>
               </div>
             </div>

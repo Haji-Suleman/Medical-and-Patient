@@ -7,12 +7,10 @@ import MainPatient from './patient/pages/Main/Main'
 import { ToastContainer } from 'react-toastify'
 import { useContext, } from 'react'
 import { StoreContext } from './Context/StoreContext'
-import Error from './patient/pages/Error/Error'
 const App = () => {
   const context = useContext(StoreContext);
   if (!context) return null;
   const { token } = context;
-
   return (
     <>
       <ToastContainer />
@@ -28,7 +26,6 @@ const App = () => {
         }
         <Route path='/doctor/home' element={<MainDoctor />} />
         <Route path='/patient/home' element={<MainPatient />} />
-        <Route path='*' element={<Error />} />
       </Routes>
     </>
   )

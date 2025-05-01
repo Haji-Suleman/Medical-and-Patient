@@ -1,0 +1,162 @@
+.book-appointment {
+  margin: 40px 50px 0px 30px;
+  padding-right: 20px;
+  height: 100%;
+  width: 95%;
+  background-color: white;
+}
+.book-heading {
+  font-size: 25px;
+  font-weight: normal;
+}
+.information-box {
+  border: 1.59px solid #d8dfe0;
+  margin-top: 24px;
+  border-radius: 24px;
+  padding: 19.11px;
+  min-height: 256px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 19px;
+}
+.book-information .personal-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.book-information .personal-details img {
+  width: 57.34px;
+  aspect-ratio: 1/1;
+}
+.book-information .personal-details p:first-child {
+  font-weight: 500;
+  font-size: 18px;
+}
+.book-appointment .personal-details p:last-child {
+  font-size: 14px;
+  color: #18a0fb;
+}
+.book-appointment .book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+.book-appointment .book-info > div {
+  display: flex;
+}
+.book-appointment .book-info > div {
+  gap: 42px;
+}
+.book-appointment .book-info > div > div {
+  display: flex;
+  gap: 7px;
+  font-weight: 500;
+}
+.book-appointment .book-info > div img {
+  width: 22.3px;
+  aspect-ratio: 1/1;
+}
+.book-appointment .book-info > div .comment {
+  width: min(1032px, 90%);
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0px;
+  color: #626d6f;
+}
+.book-appointment .select-day h4 {
+  font-size: 25px;
+  margin-top: 50px;
+  font-weight: 400;
+}
+.book-appointment .select-day .day-date-day {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-around;
+  gap: 10px;
+}
+.book-appointment .select-day .day-date-day div {
+  flex: 1;
+  text-align: center;
+  color: #18a0fb;
+}
+.book-appointment .select-day .day-date-date {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 20px;
+}
+.book-appointment .select-day .day-date-date div {
+  background-color: #f2f5f6;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  height: 48px;
+  line-height: 48px;
+}
+
+.book-appointment .select-day .day-date-date div.Day-Active {
+  background-color: #18a0fb;
+  color: white;
+}
+
+.reason-for-appointment h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+.reason-for-appointment textarea {
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+  outline-color: #18a0fb;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 6px;
+}
+.reason-for-appointment textarea::-webkit-scrollbar {
+  display: none;
+}
+.booking-appointment {
+  margin-top: 40px;
+  text-align: right;
+}
+.booking-appointment .book-appointment-btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #18a0fb;
+  color: white;
+  cursor: pointer;
+}
+.select-time h4 {
+  margin-top: 40px;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.select-time .select-time-text {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.select-time .select-time-text > div{
+  width: 130px;
+  background-color: #F2F5F6;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 18px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+.select-time .select-time-text > div.Active-time{
+  background-color: #18a0fb;
+  color: white;
+  
+}

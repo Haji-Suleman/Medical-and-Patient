@@ -15,19 +15,18 @@ const StoreContextProvider = ({ children }: Props) => {
     const [data, setData] = useState<Doctor[]>([]);
     const [token, setToken] = useState<string>("");
     const [userData, setUserData] = useState<UserData>({ name: "", email: "", date: "", _id: "" });
-
+    const [page,setPage] = useState<boolean>(false);
     useEffect(() => {
         async function loadData() {
             try {
                 const localToken = localStorage.getItem("token");
                 if (localToken) {
                     setToken(localToken);
-                    const response = await axios.post(`${url}/api/patient/data`, { token: localToken });
+                    const response = await axios.post(`${url}/api/${window.location.href.split("/")[3]}/data`, { token: localToken });
                     const { name, email, date, _id } = response.data.data;
                     setUserData({ name, email, date, _id });
                 }
-
-                const DoctorList = await axios.post(`${url}/api/doctor/list`);
+                const DoctorList = await axios.post(`${url}/api/doctor/data`);
                 const DoctorData: elementType[] = DoctorList.data.data;
 
                 const formattedDoctors: Doctor[] = DoctorData.map(doctor => ({
@@ -36,7 +35,8 @@ const StoreContextProvider = ({ children }: Props) => {
                     experience: 5,
                     rating: 4.5,
                     comment: "NOtAdded",
-                    speciality: doctor.speciality
+                    speciality: doctor.speciality,
+                    _id: doctor._id
                 }));
 
                 setData(formattedDoctors);
@@ -55,7 +55,7 @@ const StoreContextProvider = ({ children }: Props) => {
     }, [token]);
 
     return (
-        <StoreContext.Provider value={{ active, setActive, data, url, token, setToken, userData }}>
+        <StoreContext.Provider value={{ active, setActive, data, url, token, setToken, userData,page,setPage }}>
             {children}
         </StoreContext.Provider>
     );

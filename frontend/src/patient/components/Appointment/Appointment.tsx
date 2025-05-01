@@ -1,54 +1,45 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./Appointment.css"
 import { assets } from "../../../assets/assets"
+import axios from "axios"
+
 const Appointment = () => {
   const [activePatient, setActivePatient] = useState<number>(-1)
+  const url = "http://localhost:4000"
+
   type Appointment = {
     name: string;
-    date: {
-      day: number;
-      month: string;
-      year: number;
-    };
-    time: {
-      first_time: string;
-      second_time: string;
-    };
-    phone: string;
+    date: string;
+    time: string;
+    number: string;
     comment: string;
-    specialization: string;
-    status: string;
-  };
+    imageLink: string;
+    status?: string;
+    specialization?: string;
+  }
 
-  const data: Appointment[] = [
-    {
-      name: "Emily Jones",
-      date: { day: 9, month: "November", year: 2024 },
-      time: { first_time: "11:00am", second_time: "11:30pm" },
-      phone: "+923079852568",
-      comment: "I would like to discuss recent test results",
-      specialization: "Orthodox",
-      status: "Pending"
-    },
-    {
-      name: "Emily Jones",
-      date: { day: 9, month: "November", year: 2024 },
-      time: { first_time: "11:00am", second_time: "11:30pm" },
-      phone: "+923079852568",
-      comment: "I would like to discuss recent test results",
-      specialization: "Mdcat",
-      status: "Declined"
-    },
-    {
-      name: "Emily Jones",
-      date: { day: 9, month: "November", year: 2024 },
-      time: { first_time: "11:00am", second_time: "11:30pm" },
-      phone: "+923079852568",
-      comment: "I would like to discuss recent test results",
-      specialization: "cardiology",
-      status: "Accepted"
+  const [data, setData] = useState<Appointment[]>()
+
+  useEffect(() => {
+    const loadData = async () => {
+      const showRequests = await axios.post(`${url}/api/doctor/showrequest`, {
+        token: localStorage.getItem('token')
+      })
+      const realData = showRequests.data.data
+      setData(realData)
+      console.log(realData)
     }
-  ];
+    loadData()
+  }, [])
+
+  function formatTime(hour: number, minute: number): string {
+    const ampm = hour >= 12 ? "pm" : "am"
+    hour = hour % 12
+    if (hour === 0) hour = 12
+    const minuteStr = minute < 10 ? `0${minute}` : `${minute}`
+    return `${hour}:${minuteStr}${ampm}`
+  }
+
   return (
     <div className="appointment">
       <div className="second-nav">
@@ -64,12 +55,31 @@ const Appointment = () => {
 
       <div className="appoint-footer appoint-patient-footer">
         {
-          data.map(({ date, time, phone, comment, name, specialization, status }, key) => {
+          data?.map(({ date, time, number, comment, name, status,specialization }, key) => {
+            const newDate = new Date(date)
+            const day = newDate.getDate()
+            const month = newDate.toLocaleString('default', { month: 'short' })
+            const year = newDate.getFullYear()
+
+            const [firstHour, firstMinute] = time.split(":").map(Number)
+            let endHour = firstHour
+            let endMinute = firstMinute + 30
+            if (endMinute >= 60) {
+              endMinute -= 60
+              endHour += 1
+            }
+
+            const firstTimeString = formatTime(firstHour, firstMinute)
+            const secondTimeString = formatTime(endHour, endMinute)
+
             return (
-              <div key={key} onClick={() => setActivePatient(key)} className={activePatient === key ? "active-patient" : ""}>
+              <div
+                key={key}
+                onClick={() => setActivePatient(key)}
+                className={activePatient === key ? "active-patient" : ""}
+              >
                 <div className="name-photo-status-patient">
                   <div>
-
                     <img src={assets.emily} alt="" className="emily" />
                     <div>
                       <p><b>{name}</b></p>
@@ -80,20 +90,23 @@ const Appointment = () => {
                     <button>{status}</button>
                   </div>
                 </div>
+
                 <div className="date-time">
                   <div className="date-time-date">
                     <img src={assets.calender} alt="" className="call-calender-time-icons" />
-                    <p>{date.day} {date.month}, {date.year}</p>
+                    <p>{day} {month}, {year}</p>
                   </div>
                   <div className="date-time-time">
                     <img src={assets.time} alt="" className="call-calender-time-icons" />
-                    <p>{time.first_time} - {time.second_time}</p>
+                    <p>{firstTimeString} - {secondTimeString}</p>
                   </div>
                 </div>
+
                 <div className="patient-phone">
                   <img src={assets.call} alt="" className="call-calender-time-icons" />
-                  <p> {phone}</p>
+                  <p>{number}</p>
                 </div>
+
                 <div className="patient-comment">
                   {comment}
                 </div>
